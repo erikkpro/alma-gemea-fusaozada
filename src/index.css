@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Alma Gêmea — Design system místico (roxo profundo + dourado) */
+
+@layer base {
+  :root {
+    /* Background místico */
+    --background: 270 50% 8%;
+    --foreground: 280 20% 95%;
+
+    --card: 270 45% 14%;
+    --card-foreground: 280 20% 95%;
+
+    --popover: 270 45% 14%;
+    --popover-foreground: 280 20% 95%;
+
+    /* Roxo principal */
+    --primary: 270 60% 55%;
+    --primary-foreground: 280 20% 98%;
+
+    /* Dourado místico */
+    --gold: 43 75% 55%;
+    --gold-foreground: 270 50% 10%;
+    --gold-glow: 43 95% 70%;
+
+    /* Rosa magenta (destaque) */
+    --magenta: 320 75% 60%;
+    --magenta-foreground: 280 20% 98%;
+
+    --secondary: 270 35% 22%;
+    --secondary-foreground: 280 20% 95%;
+
+    --muted: 270 30% 20%;
+    --muted-foreground: 280 15% 70%;
+
+    --accent: 43 75% 55%;
+    --accent-foreground: 270 50% 10%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 270 35% 25%;
+    --input: 270 35% 22%;
+    --ring: 43 75% 55%;
+
+    --radius: 1rem;
+
+    /* Gradientes */
+    --gradient-mystic: linear-gradient(180deg, hsl(270 55% 12%) 0%, hsl(280 50% 8%) 50%, hsl(260 60% 6%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(43 75% 55%), hsl(38 85% 65%));
+    --gradient-card: linear-gradient(145deg, hsl(270 45% 18%), hsl(265 50% 13%));
+    --gradient-magenta: linear-gradient(135deg, hsl(320 75% 60%), hsl(280 70% 55%));
+
+    /* Sombras */
+    --shadow-gold: 0 8px 30px -8px hsl(43 75% 55% / 0.4);
+    --shadow-mystic: 0 20px 60px -20px hsl(270 80% 30% / 0.5);
+    --glow-gold: 0 0 30px hsl(43 95% 70% / 0.3);
+
+    /* Transições */
+    --ease-mystic: cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 270 45% 12%;
+    --sidebar-foreground: 280 20% 90%;
+    --sidebar-primary: 270 60% 55%;
+    --sidebar-primary-foreground: 280 20% 98%;
+    --sidebar-accent: 270 35% 22%;
+    --sidebar-accent-foreground: 280 20% 95%;
+    --sidebar-border: 270 35% 25%;
+    --sidebar-ring: 43 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body, #root {
+    min-height: 100%;
+  }
+
+  body {
+    @apply text-foreground;
+    background: var(--gradient-mystic);
+    background-attachment: fixed;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  /* Estrelas sutis no fundo */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, hsl(43 90% 80% / 0.4), transparent),
+      radial-gradient(1px 1px at 60% 70%, hsl(280 70% 80% / 0.3), transparent),
+      radial-gradient(1.5px 1.5px at 80% 20%, hsl(43 90% 80% / 0.3), transparent),
+      radial-gradient(1px 1px at 35% 85%, hsl(280 70% 80% / 0.4), transparent),
+      radial-gradient(1px 1px at 90% 60%, hsl(43 90% 80% / 0.3), transparent),
+      radial-gradient(1.5px 1.5px at 10% 75%, hsl(43 90% 80% / 0.25), transparent);
+    z-index: 0;
+  }
+
+  #root {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@layer utilities {
+  .text-gold {
+    color: hsl(var(--gold));
+  }
+  .text-gold-glow {
+    color: hsl(var(--gold-glow));
+  }
+  .text-magenta {
+    color: hsl(var(--magenta));
+  }
+  .bg-gold {
+    background-color: hsl(var(--gold));
+    color: hsl(var(--gold-foreground));
+  }
+  .bg-gradient-mystic {
+    background: var(--gradient-mystic);
+  }
+  .bg-gradient-gold {
+    background: var(--gradient-gold);
+  }
+  .bg-gradient-card {
+    background: var(--gradient-card);
+  }
+  .bg-gradient-magenta {
+    background: var(--gradient-magenta);
+  }
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+  .shadow-mystic {
+    box-shadow: var(--shadow-mystic);
+  }
+  .glow-gold {
+    box-shadow: var(--glow-gold);
+  }
+  .font-serif-mystic {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  }
+  .border-gold {
+    border-color: hsl(var(--gold));
+  }
+
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 0.4s var(--ease-mystic) both;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out both;
+  }
+
+  @keyframes typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-6px); opacity: 1; }
+  }
+  .typing-dot {
+    animation: typing-bounce 1.2s infinite;
+  }
+  .typing-dot:nth-child(2) { animation-delay: 0.15s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes pulse-gold {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--gold) / 0.6); }
+    50% { box-shadow: 0 0 0 12px hsl(var(--gold) / 0); }
+  }
+  .pulse-gold {
+    animation: pulse-gold 2s infinite;
+  }
+}
