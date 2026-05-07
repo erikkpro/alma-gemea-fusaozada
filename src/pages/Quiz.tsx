@@ -388,7 +388,7 @@ export default function Quiz() {
             </h2>
             <img src={isisCard} alt="Numeromante Isis - Online" className="w-full h-auto mb-5 rounded-2xl" />
             <button
-              onClick={() => { navigate("/chat"); }}
+              onClick={() => { navigate(`/chat?nome=${encodeURIComponent(nome.trim())}`); }}
               className="w-full h-14 rounded-2xl bg-[#312e81] hover:bg-[#312e81]/90 text-white font-bold"
             >
               REVELAR MINHA ALMA GÊMEA

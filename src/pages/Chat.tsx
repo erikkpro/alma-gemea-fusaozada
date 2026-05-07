@@ -30,6 +30,8 @@ export default function Chat() {
     for (const [k, val] of params) v[k] = val;
     if (!v['nome'] && v['name']) v['nome'] = v['name'];
     if (!v['nome']) v['nome'] = '';
+    // Typebot usa {{Nome}} com N maiúsculo
+    if (v['nome']) v['Nome'] = v['nome'];
     return v;
   }, []);
 
